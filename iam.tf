@@ -131,11 +131,8 @@ data "aws_iam_policy_document" "glue_policy_document" {
   statement {
     effect = "Allow"
     actions = [
-      # "s3:GetObject",
-      # "s3:PutObject",
-      # "s3:ListObject",
-      # "s3:DeleteObject",
-      "s3:*"
+      "s3:*Object",
+      "s3:*Object*"
     ]
     resources = [
       "${data.aws_s3_bucket.s3_bucket["s3_second_bucket_name"].arn}",

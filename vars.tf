@@ -14,9 +14,9 @@ variable "name" {
   description = "value representing the name of the S3 bucket"
   type        = map(string)
   default = {
-    "s3_first_bucket_name"  = "bkt-source-json-data"
-    "s3_second_bucket_name" = "bkt-destination-csv-data"
-    "s3_third_bucket_name"  = "bkt-pyspark-src-code"
+    "s3_first_bucket_name"  = "bkt01-source-json-data"
+    "s3_second_bucket_name" = "bkt02-destination-csv-data"
+    "s3_third_bucket_name"  = "bkt03-pyspark-src-code"
   }
 }
 variable "project" {

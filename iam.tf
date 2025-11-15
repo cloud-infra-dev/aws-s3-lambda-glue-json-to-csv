@@ -44,7 +44,7 @@ resource "aws_iam_role" "lambda_role" {
   })
 }
 
-# Inline policy: CloudWatch Logs + S3 permissions
+# Inline policy: CloudWatch Logs + S3 + Glue permissions
 resource "aws_iam_policy" "lambda_policy" {
   name = "${var.lambda_function_name}-policy"
   policy = jsonencode({
@@ -124,7 +124,6 @@ data "aws_iam_policy_document" "glue_policy_document" {
     effect  = "Allow"
     actions = ["s3:GetObject"]
     resources = [
-      # "${data.aws_s3_bucket.s3_bucket["s3_first_bucket_name"].arn}/sample.json",
       "${data.aws_s3_bucket.s3_bucket["s3_first_bucket_name"].arn}/*"
     ]
   }
@@ -136,9 +135,7 @@ data "aws_iam_policy_document" "glue_policy_document" {
       # "s3:PutObject",
       # "s3:ListObject",
       # "s3:DeleteObject",
-      "s3:*",
-      # "glue:*",
-      # "iam:*",
+      "s3:*"
     ]
     resources = [
       "${data.aws_s3_bucket.s3_bucket["s3_second_bucket_name"].arn}",
@@ -147,6 +144,13 @@ data "aws_iam_policy_document" "glue_policy_document" {
       "${data.aws_s3_bucket.s3_bucket["s3_third_bucket_name"].arn}/*"
     ]
   }
+
+  # Uncomment the below statement block if you use KMS CMK encryption for S3 buckets
+  # statement {
+  #   effect    = "Allow"
+  #   actions   = ["kms:*"]
+  #   resources = ["${data.aws_kms_key.s3_kms_key.arn}"]
+  # }
 
   statement {
     effect = "Allow"

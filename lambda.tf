@@ -1,7 +1,7 @@
 # CloudWatch Log group to store Lambda logs
 resource "aws_cloudwatch_log_group" "lambda_json_to_csv_log_group" {
   name              = "/lambda/${var.lambda_function_name}"
-  retention_in_days = 1
+  retention_in_days = var.cw_logs_retention_period_days
 }
 
 /*

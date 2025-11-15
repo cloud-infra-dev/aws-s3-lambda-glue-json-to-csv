@@ -12,3 +12,10 @@ data "aws_s3_bucket" "s3_bucket" {
   for_each   = var.name
   bucket     = each.value
 }
+
+# Uncomment the below data block if you use KMS CMK encryption
+
+# data "aws_kms_key" "s3_kms_key" {
+#   depends_on = [var.kms_key_id]
+#   key_id     = var.kms_key_id
+# }

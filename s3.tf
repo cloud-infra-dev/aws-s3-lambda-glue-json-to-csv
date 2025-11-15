@@ -62,6 +62,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
   bucket     = aws_s3_bucket.this[each.key].id
   rule {
     apply_server_side_encryption_by_default {
+      # Uncomment the below 2 lines if you use KMS CMK encryption and comment the sse_algorithm line
+
       # kms_master_key_id = var.kms_key_id
       # sse_algorithm     = "aws:kms"
       sse_algorithm = "AES256"
@@ -79,7 +81,7 @@ resource "aws_s3_bucket_ownership_controls" "this" {
 }
 
 resource "aws_s3_bucket_policy" "this" {
-  depends_on = [aws_s3_bucket_ownership_controls.this]
+  depends_on = [aws_s3_bucket_ownership_controls.this, aws_s3_bucket_public_access_block.this]
   for_each   = var.name
   bucket     = aws_s3_bucket.this[each.key].id
   policy     = data.aws_iam_policy_document.this[each.key].json
@@ -92,13 +94,13 @@ resource "aws_s3_bucket_acl" "s3_acl" {
   acl        = "private"
 }
 
-######################################################################
+###########################################################################
 # Adding S3 bucket as trigger to lambda function and giving the permissions
-######################################################################
+###########################################################################
 
 # Bucket notification to send Put events (only for .json objects)
 resource "aws_s3_bucket_notification" "lambda_trigger" {
-  # for_each = var.name
+
   # Ensure permission created before notification (to avoid race)
   depends_on = [aws_lambda_permission.s3_lambda_invoke_permission]
   bucket     = data.aws_s3_bucket.s3_bucket["s3_first_bucket_name"].id

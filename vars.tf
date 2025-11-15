@@ -49,6 +49,7 @@ variable "tags" {
   default = {}
 }
 
+# Uncomment the below variable if you use KMS CMK encryption
 # variable "kms_key_id" {
 #   type = string
 # }
@@ -80,4 +81,10 @@ variable "glue_job_name" {
   type        = string
   description = "Name of the Glue job to start"
   default     = "json_to_csv"
+}
+
+variable "cw_logs_retention_period_days" {
+  description = "Cloudwatch Logs Retention Period in Days"
+  type        = number
+  default     = 1
 }

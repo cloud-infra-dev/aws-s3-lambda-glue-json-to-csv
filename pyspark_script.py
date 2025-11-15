@@ -47,6 +47,6 @@ def main():
 
     df = spark.read.option("multiline", True).option("inferSchema", False).json(input_file_path)
     df1=flatten(df)
-    df1.coalesce(1).write.format("csv").option("header", "true").save("s3a://destination-csv-s3-duke-ima-poc/{}".format(file_name.split('.')[0]))
+    df1.coalesce(1).write.format("csv").option("header", "true").save("s3a://bkt02-destination-csv-data/{}".format(file_name.split('.')[0]))
 
 main()

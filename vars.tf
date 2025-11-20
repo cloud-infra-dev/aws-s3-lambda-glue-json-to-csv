@@ -32,7 +32,7 @@ variable "env" {
     condition     = contains(["poc", "sbx", "dev", "qa", "prod"], var.env)
     error_message = "Environment must be one of: poc, sbx, dev, qa, prod"
   }
-  default = "poc"
+  default = "sbx"
 }
 
 variable "versioning" {

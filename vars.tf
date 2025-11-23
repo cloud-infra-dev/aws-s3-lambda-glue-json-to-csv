@@ -10,11 +10,6 @@ variable "aws_account_id" {
   default     = "986825468457" #Put AWS Account ID
 }
 
-variable "region" {
-  description = "The AWS region to deploy resources in"
-  type        = string
-}
-
 variable "access_key" {
   type      = string
   sensitive = true

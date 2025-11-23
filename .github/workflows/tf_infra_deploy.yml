@@ -34,7 +34,7 @@ permissions:
 
 jobs:
   terraform_IaC_deploy:
-    name: "Terraform_apply"
+    name: "Terraform_IaC_Deploy_to_AWS_via_HCP_Terraform_Cloud"
     runs-on: ubuntu-latest
     env:
       TF_CLOUD_ORGANIZATION: "cloud-infra-dev"
@@ -62,7 +62,7 @@ jobs:
           speculative: true
 
       - name: "Configure AWS Credentials"
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           role-session-name: GitHub_to_HCP_via_FederatedOIDC

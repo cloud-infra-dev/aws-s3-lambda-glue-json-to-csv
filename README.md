@@ -53,8 +53,9 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_access_key"></a> [access\_key](#input\_access\_key) | n/a | `string` | n/a | yes |
 | <a name="input_archive_retention_noncurrent_days"></a> [archive\_retention\_noncurrent\_days](#input\_archive\_retention\_noncurrent\_days) | n/a | `string` | `90` | no |
-| <a name="input_aws_account_id"></a> [aws\_account\_id](#input\_aws\_account\_id) | The AWS account ID to deploy resources | `string` | `"986825468457"` | no |
+| <a name="input_aws_account_id"></a> [aws\_account\_id](#input\_aws\_account\_id) | The AWS account ID to deploy resources | `string` | `"211125325120"` | no |
 | <a name="input_cw_logs_retention_period_days"></a> [cw\_logs\_retention\_period\_days](#input\_cw\_logs\_retention\_period\_days) | Cloudwatch Logs Retention Period in Days | `number` | `3` | no |
 | <a name="input_default_retention_noncurrent_days"></a> [default\_retention\_noncurrent\_days](#input\_default\_retention\_noncurrent\_days) | n/a | `string` | `180` | no |
 | <a name="input_env"></a> [env](#input\_env) | value representing the environment (e.g., dev, staging, prod) | `string` | `"sbx"` | no |
@@ -63,8 +64,10 @@ No modules.
 | <a name="input_lambda_runtime"></a> [lambda\_runtime](#input\_lambda\_runtime) | Runtime for the Lambda function | `string` | `"python3.13"` | no |
 | <a name="input_name"></a> [name](#input\_name) | value representing the name of the S3 bucket | `map(string)` | <pre>{<br/>  "s3_first_bucket_name": "bkt01-source-json-data",<br/>  "s3_second_bucket_name": "bkt02-destination-csv-data",<br/>  "s3_third_bucket_name": "bkt03-pyspark-src-code"<br/>}</pre> | no |
 | <a name="input_project"></a> [project](#input\_project) | Project name | `string` | `"json-to-csv-etl-datapipeline"` | no |
-| <a name="input_region"></a> [region](#input\_region) | The AWS region to deploy resources in | `string` | `"us-west-2"` | no |
+| <a name="input_region"></a> [region](#input\_region) | The AWS region to deploy resources in | `string` | n/a | yes |
+| <a name="input_secret_key"></a> [secret\_key](#input\_secret\_key) | n/a | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | n/a | `map(string)` | `{}` | no |
+| <a name="input_token"></a> [token](#input\_token) | n/a | `string` | n/a | yes |
 | <a name="input_versioning"></a> [versioning](#input\_versioning) | n/a | `string` | `"Disabled"` | no |
 
 ## Outputs

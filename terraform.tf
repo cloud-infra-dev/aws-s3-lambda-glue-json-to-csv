@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.13.0"
+  required_version = ">= 1.0.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -27,19 +27,19 @@ terraform {
   #   }
   # }
 
-  # cloud {
-  #   organization = "cloud_infra_dev"
-  #   workspaces {
-  #     name    = "github_actions_oidc_tfc"
-  #     project = "AWS_IaC_Project"
-  #   }
-  # }
+  cloud {
+    organization = "cloud-infra-dev"
+    workspaces {
+      name    = "github-actions-oidc-hcp-terraform"
+      project = "AWS-Cloud-IaC"
+    }
+  }
 }
 provider "aws" {
-  region = var.region
-  # access_key          = var.access_key
-  # secret_key          = var.secret_key
-  # token               = var.token
+  region              = var.region
+  access_key          = var.access_key
+  secret_key          = var.secret_key
+  token               = var.token
   allowed_account_ids = [var.aws_account_id]
 }
 # provider "vault" {

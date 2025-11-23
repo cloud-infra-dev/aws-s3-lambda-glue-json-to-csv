@@ -34,3 +34,14 @@ terraform.rc
 
 # VSCode settings
 .vscode/
+.vscode/*.*
+
+.pre-commit-config.yaml
+.tflint.hcl
+.terraform.lock.hcl
+.venv/
+.venv/*
+.infracost/
+.infracost/*
+.idea/
+.idea/*

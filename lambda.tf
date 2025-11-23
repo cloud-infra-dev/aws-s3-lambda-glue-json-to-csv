@@ -64,5 +64,3 @@ resource "aws_lambda_function" "json_to_csv_lambda" {
     }
   )
 }
-
-

@@ -1,13 +1,33 @@
 variable "region" {
   description = "The AWS region to deploy resources in"
   type        = string
-  default     = "us-west-2"
+  # default     = "us-west-2"
 }
 
 variable "aws_account_id" {
   description = "The AWS account ID to deploy resources"
   type        = string
   default     = "986825468457" #Put AWS Account ID
+}
+
+variable "region" {
+  description = "The AWS region to deploy resources in"
+  type        = string
+}
+
+variable "access_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "secret_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "token" {
+  type      = string
+  sensitive = true
 }
 
 variable "name" {
@@ -86,5 +106,5 @@ variable "glue_job_name" {
 variable "cw_logs_retention_period_days" {
   description = "Cloudwatch Logs Retention Period in Days"
   type        = number
-  default     = 1
+  default     = 3
 }

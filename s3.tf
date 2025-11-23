@@ -121,4 +121,3 @@ resource "aws_lambda_permission" "s3_lambda_invoke_permission" {
   principal     = "s3.amazonaws.com"
   source_arn    = data.aws_s3_bucket.s3_bucket["s3_first_bucket_name"].arn
 }
-
